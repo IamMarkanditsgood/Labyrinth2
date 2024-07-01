@@ -1,14 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level", menuName = "ScriptableObjects/LevelConfig", order = 1)]
-public class GameConfig : ScriptableObject
+namespace Assets.Scripts.Game
 {
-    [SerializeField] private GameObject _platformPrefab;
-    [SerializeField] private GameObject _ballPrefab;
-    [SerializeField] private Vector3 _ballStartPos;
-    [SerializeField] private Vector3 _platformStartPos;
-    [SerializeField] private GameLevels _gameLevel;
+    [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObjects/GameConfig", order = 1)]
+    public class GameConfig : ScriptableObject
+    {
+        [SerializeField] private LevelConfig[] _levels;
+        [SerializeField] private InputSystems _inputSystem;
 
+        public InputSystems InputSystem => _inputSystem;
+
+        public LevelConfig GetLevelConfig(GameLevels currentLevel)
+        {
+            for(int i = 0; i < _levels.Length; i++)
+            {
+                if(currentLevel == _levels[i].GameLevel)
+                {
+                    return _levels[i]; 
+                }
+            }
+            return null;
+        }
+
+    }
 }

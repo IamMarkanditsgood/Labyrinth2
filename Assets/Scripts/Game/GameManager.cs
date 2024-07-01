@@ -1,28 +1,29 @@
-﻿using System.Collections;
+using Assets.Scripts.Game;
 using UnityEngine;
 
-namespace Assets.Scripts.Game
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    [SerializeField] private GameConfig _gameConfig;
+    [SerializeField] private GameLevels _currentLevel;
+
+    [SerializeField] private LevelManager _levelManager;
+    [SerializeField] private InputManager _inputManager;
+
+    private LevelConfig _currentLevelConfig;
+
+    private void Start()
     {
-        [SerializeField] private GameConfig _levelConfig;
-
-        private LevelMaker _levelMaker = new();
-
-        void Start()
-        {
-            _levelMaker.CreateLevel(_levelConfig);
-        }
-        void Update()
-        {
-
-        }
+        InitGame();
     }
-    public class LevelMaker
-    {
-        public void CreateLevel(GameConfig levelConfig)
-        {
 
-        }
+    private void Update()
+    {
+        _inputManager.CheckRotation();
+    }
+    private void InitGame()
+    {
+        _currentLevelConfig = _gameConfig.GetLevelConfig(_currentLevel);
+        _levelManager.Init(_currentLevelConfig);
+        _inputManager.Init(_gameConfig.InputSystem);
     }
 }
