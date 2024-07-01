@@ -1,3 +1,4 @@
+using Assets.Scripts.Entities.Ball;
 using System;
 using UnityEngine;
 
@@ -5,17 +6,33 @@ using UnityEngine;
 public class LevelManager
 {
     private LevelConfig _levelConfig;
+    private SceneMaker sceneMaker = new();
 
     public void Init(LevelConfig levelConfig)
     { 
         _levelConfig = levelConfig;
-        CreateScene(); 
+        sceneMaker.CreateScene(levelConfig); 
+    }
+}
+
+public class SceneMaker
+{
+    public void CreateScene(LevelConfig levelConfig)
+    {
+        CreatePlatform(levelConfig);
+        CreateBall(levelConfig);
     }
 
-    private void CreateScene()
+    private void CreatePlatform(LevelConfig levelConfig)
     {
         Platform platform;
-        platform = UnityEngine.Object.Instantiate(_levelConfig.Platform, _levelConfig.PlatformSpawnPosition, Quaternion.identity);
+        platform = UnityEngine.Object.Instantiate(levelConfig.Platform, levelConfig.PlatformSpawnPosition, Quaternion.identity);
         platform.Init();
+    }
+    private void CreateBall(LevelConfig levelConfig)
+    {
+        Ball ball;
+        ball = UnityEngine.Object.Instantiate(levelConfig.Ball, levelConfig.BallSpawnPosition, Quaternion.identity);
+        ball.Init();
     }
 }

@@ -19,6 +19,7 @@ public class Platform : MonoBehaviour
     {
         InputEvents.OnRotationDirectionChanged += _platformRotationManager.RotatePlatform;
     }
+
     private void UnSubscribe()
     {
         InputEvents.OnRotationDirectionChanged -= _platformRotationManager.RotatePlatform;
