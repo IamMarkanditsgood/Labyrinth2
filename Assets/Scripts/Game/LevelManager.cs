@@ -14,7 +14,8 @@ public class LevelManager
 
     private void CreateScene()
     {
-        UnityEngine.Object.Instantiate(_levelConfig.Platform, _levelConfig.PlatformSpawnPosition, Quaternion.identity);
-
+        Platform platform;
+        platform = UnityEngine.Object.Instantiate(_levelConfig.Platform, _levelConfig.PlatformSpawnPosition, Quaternion.identity);
+        platform.Init();
     }
 }

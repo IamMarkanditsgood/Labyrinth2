@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    private void Update()
+    {
+        _inputManager.CheckRotation();
+    }
     private void InitGame()
     {
         _currentLevelConfig = _gameConfig.GetLevelConfig(_currentLevel);

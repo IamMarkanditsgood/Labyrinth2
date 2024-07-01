@@ -15,7 +15,7 @@ public class InputManager
         _currentInputSystem = currentInputSystem;
         _previousRotationDirection = Vector2.zero;
     }
-    private void CheckRotation()
+    public void CheckRotation()
     {
         switch(_currentInputSystem)
         {
@@ -40,13 +40,14 @@ public class InputManager
         Vector2 direction = new Vector2(horizontal, vertical);
         if(IsInputted(direction))
         {
-
+            InputEvents.ChangeRotationDirection(direction);
         }
     }
     
     private bool IsInputted(Vector2 direction)
     {
-        if(direction != _previousRotationDirection)
+        
+        if (direction != _previousRotationDirection)
         {
             return true;
         }
