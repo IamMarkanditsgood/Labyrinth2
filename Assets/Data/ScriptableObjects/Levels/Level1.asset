@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameLevel: 0
   _platform: {fileID: 7859507043686205608, guid: 44652b33e8813c84681bbcfb41628f92, type: 3}
-  _ball: {fileID: 0}
+  _ball: {fileID: -6295533780879939273, guid: 12d49a299fdb09d4aa757a9892d35ccd, type: 3}
   _platformSpawnPosition: {x: 0, y: 0, z: 0}
   _ballSpawnPosition: {x: 0, y: 0, z: 0}

@@ -25,13 +25,13 @@ public class SceneMaker
 
     private void CreatePlatform(LevelConfig levelConfig)
     {
-        Platform platform;
+        IInitializable platform;
         platform = UnityEngine.Object.Instantiate(levelConfig.Platform, levelConfig.PlatformSpawnPosition, Quaternion.identity);
         platform.Init();
     }
     private void CreateBall(LevelConfig levelConfig)
     {
-        Ball ball;
+        IInitializable ball;
         ball = UnityEngine.Object.Instantiate(levelConfig.Ball, levelConfig.BallSpawnPosition, Quaternion.identity);
         ball.Init();
     }
